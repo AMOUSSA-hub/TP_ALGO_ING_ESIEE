@@ -1,21 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h> 
 
 
-int main(int argc, char* argv[]){
-   
-printf("%d\n",powerOf(atoi(argv[1]),atoi(argv[2])));
-return 0;
 
+
+
+int puissance(int valeur,int a, int p ){
+
+    if (p == 0){
+        return 1;
+    }
+
+    if(p == 1 ){
+
+        return valeur; 
+    }
+
+    else{
+        return puissance(valeur*a,a,p-1);
+    }
 }
 
+int main(int argc, char* argv[]) {
 
-int powerOf(int entier, int puissance){
-
-    if(puissance-1 > 0 ){
-        return entier * powerOf(entier,puissance-1);
-    }
-    else{
-        return entier;
+    if (argc != 3) {
+        printf("Erreur : veuillez fournir deux nombres en arguments.\n");
+        return 1;
     }
 
+    int a = atoi(argv[1]);
+    int b = atoi(argv[2]);
+
+
+    printf("%d**%d =%d \n",a,b,puissance(a,a,b));
+
+
+    return 0;
 }
